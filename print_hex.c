@@ -1,11 +1,4 @@
-ndl_buf(buf, hexadecimal[i], ibuf);
-			count++;
-		}
-	}
-	free(binary);
-	free(hexadecimal);
-	return (count);
-}#include "main.h"
+#include "main.h"
 /**
  * print_hex - prints a decimal in hexadecimal
  * @arguments: input string
@@ -40,4 +33,11 @@ int print_hex(va_list arguments, char *buf, unsigned int ibuf)
 			first_digit = 1;
 		if (first_digit)
 		{
-			ibuf = ha
+			ibuf = handl_buf(buf, hexadecimal[i], ibuf);
+			count++;
+		}
+	}
+	free(binary);
+	free(hexadecimal);
+	return (count);
+}

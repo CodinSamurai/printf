@@ -1,11 +1,4 @@
-uf = handl_buf(buf, octal[i], ibuf);
-			count++;
-		}
-	}
-	free(binary);
-	free(octal);
-	return (count + 1);
-}#include "main.h"
+#include "main.h"
 
 /**
  * prinnoct - print the number in octal begining with zero
@@ -42,4 +35,11 @@ int prinnoct(va_list arguments, char *buf, unsigned int ibuf)
 			first_digit = 1;
 		if (first_digit)
 		{
-			ib
+			ibuf = handl_buf(buf, octal[i], ibuf);
+			count++;
+		}
+	}
+	free(binary);
+	free(octal);
+	return (count + 1);
+}

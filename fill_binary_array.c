@@ -1,18 +1,4 @@
-0';
-		int_in /= 2;
-	}
-	if (int_in != 0)
-		binary[i] = '1';
-	if (isneg)
-	{
-		for (i = 0; binary[i]; i++)
-			if (binary[i] == '0')
-				binary[i] = '1';
-			else
-				binary[i] = '0';
-	}
-	return (binary);
-}#include "main.h"
+#include "main.h"
 
 /**
  * fill_binary_array - prints decimal in binary
@@ -34,4 +20,18 @@ char *fill_binary_array(char *binary, long int int_in, int isneg, int limit)
 		if (int_in == 2)
 			binary[i] = '0';
 		else
-			binary[i] = (int_in % 2) + '
+			binary[i] = (int_in % 2) + '0';
+		int_in /= 2;
+	}
+	if (int_in != 0)
+		binary[i] = '1';
+	if (isneg)
+	{
+		for (i = 0; binary[i]; i++)
+			if (binary[i] == '0')
+				binary[i] = '1';
+			else
+				binary[i] = '0';
+	}
+	return (binary);
+}

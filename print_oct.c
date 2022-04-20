@@ -1,44 +1,41 @@
 #include "main.h"
 
 /**
- * print_oct - prints decimal number in octal
- * @arguments: input number
+ * print_rot - writes the str in ROT13
+ * @arguments: input string
  * @buf: buffer pointer
  * @ibuf: index for buffer pointer
  * Return: number of chars printed.
  */
-int print_oct(va_list arguments, char *buf, unsigned int ibuf)
-{
-	int int_input, i, isnegative, count, first_digit;
-	char *octal, *binary;
 
-	int_input = va_arg(arguments, int);
-	isnegative = 0;
-	if (int_input == 0)
+int print_rot(va_list arguments, char *buf, unsigned int ibuf)
+{
+	char alf[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char rot[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+	char *str;
+	unsigned int i, j, k;
+	char nill[] = "(avyy)";
+
+	str = va_arg(arguments, char *);
+	if (str == NULL)
 	{
-		ibuf = handl_buf(buf, '0', ibuf);
-		return (1);
+		for (i = 0; nill[i]; i++)
+			ibuf = handl_buf(buf, nill[i], ibuf);
+		return (6);
 	}
-	if (int_input < 0)
+	for (i = 0; str[i]; i++)
 	{
-		int_input = (int_input * -1) - 1;
-		isnegative = 1;
-	}
-	binary = malloc(sizeof(char) * (32 + 1));
-	binary = fill_binary_array(binary, int_input, isnegative, 32);
-	octal = malloc(sizeof(char) * (11 + 1));
-	octal = fill_oct_array(binary, octal);
-	for (first_digit = i = count = 0; octal[i]; i++)
-	{
-		if (octal[i] != '0' && first_digit == 0)
-			first_digit = 1;
-		if (first_digit)
+		for (k = j = 0; alf[j]; j++)
 		{
-			ibuf = handl_buf(buf, octal[i], ibuf);
-			count++;
+			if (str[i] == alf[j])
+			{
+				k = 1;
+				ibuf = handl_buf(buf, rot[j], ibuf);
+				break;
+			}
 		}
+		if (k == 0)
+			ibuf = handl_buf(buf, str[i], ibuf);
 	}
-	free(binary);
-	free(octal);
-	return (count);
+	return (i);
 }

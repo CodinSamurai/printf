@@ -1,16 +1,4 @@
-	if (format[i + 1] == ' ' && !format[i + 2])
-						return (-1);
-					handl_buf(buffer, format[i], ibuf), len++, i--;
-				}
-				else
-				{
-					len += function(arguments, buffer, ibuf);
-					i += ev_print_func(format, i + 1);
-				}
-			} i++;
-		}
-		else
-			h#include "main.h"
+#include "main.h"
 
 /**
  * _printf - formatted output conversion and print data.
@@ -42,7 +30,19 @@ int _printf(const char *format, ...)
 			{	function = get_print_func(format, i + 1);
 				if (function == NULL)
 				{
-				andl_buf(buffer, format[i], ibuf), len++;
+					if (format[i + 1] == ' ' && !format[i + 2])
+						return (-1);
+					handl_buf(buffer, format[i], ibuf), len++, i--;
+				}
+				else
+				{
+					len += function(arguments, buffer, ibuf);
+					i += ev_print_func(format, i + 1);
+				}
+			} i++;
+		}
+		else
+			handl_buf(buffer, format[i], ibuf), len++;
 		for (ibuf = len; ibuf > 1024; ibuf -= 1024)
 			;
 	}

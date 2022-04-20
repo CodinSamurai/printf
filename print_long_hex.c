@@ -1,12 +1,4 @@
-
-			ibuf = handl_buf(buf, hexadecimal[i], ibuf);
-			count++;
-		}
-	}
-	free(binary);
-	free(hexadecimal);
-	return (count);
-}#include "main.h"
+#include "main.h"
 /**
  * prinlhex - prints a long decimal in hexadecimal
  * @arguments: input string
@@ -42,3 +34,11 @@ int prinlhex(va_list arguments, char *buf, unsigned int ibuf)
 			first_digit = 1;
 		if (first_digit)
 		{
+			ibuf = handl_buf(buf, hexadecimal[i], ibuf);
+			count++;
+		}
+	}
+	free(binary);
+	free(hexadecimal);
+	return (count);
+}

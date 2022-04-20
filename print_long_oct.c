@@ -1,11 +1,4 @@
-, ibuf);
-			count++;
-		}
-	}
-	free(binary);
-	free(octal);
-	return (count);
-}#include "main.h"
+#include "main.h"
 /**
  * prinloct - prints long decimal number in octal
  * @arguments: input number
@@ -41,4 +34,11 @@ int prinloct(va_list arguments, char *buf, unsigned int ibuf)
 			first_digit = 1;
 		if (first_digit)
 		{
-			ibuf = handl_buf(buf, octal[i]
+			ibuf = handl_buf(buf, octal[i], ibuf);
+			count++;
+		}
+	}
+	free(binary);
+	free(octal);
+	return (count);
+}

@@ -1,19 +1,4 @@
-	for (i = 0; nill[i]; i++)
-			ibuf = handl_buf(buf, nill[i], ibuf);
-		return (6);
-	}
-	for (i = 0; str[i]; i++)
-	{
-		for (k = j = 0; alf[j]; j++)
-		{
-			if (str[i] == alf[j])
-			{
-				k = 1;
-				ibuf = handl_buf(buf, rot[j], ibuf);
-				break;
-			}
-		}
-		if #include "main.h"
+#include "main.h"
 
 /**
  * print_rot - writes the str in ROT13
@@ -34,7 +19,22 @@ int print_rot(va_list arguments, char *buf, unsigned int ibuf)
 	str = va_arg(arguments, char *);
 	if (str == NULL)
 	{
-	(k == 0)
+		for (i = 0; nill[i]; i++)
+			ibuf = handl_buf(buf, nill[i], ibuf);
+		return (6);
+	}
+	for (i = 0; str[i]; i++)
+	{
+		for (k = j = 0; alf[j]; j++)
+		{
+			if (str[i] == alf[j])
+			{
+				k = 1;
+				ibuf = handl_buf(buf, rot[j], ibuf);
+				break;
+			}
+		}
+		if (k == 0)
 			ibuf = handl_buf(buf, str[i], ibuf);
 	}
 	return (i);

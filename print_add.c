@@ -1,19 +1,4 @@
-buf, '0', ibuf);
-	ibuf = handl_buf(buf, 'x', ibuf);
-	for (first_digit = i = count = 0; hexadecimal[i]; i++)
-	{
-		if (hexadecimal[i] != '0' && first_digit == 0)
-			first_digit = 1;
-		if (first_digit)
-		{
-			ibuf = handl_buf(buf, hexadecimal[i], ibuf);
-			count++;
-		}
-	}
-	free(binary);
-	free(hexadecimal);
-	return (count + 2);
-}#include "main.h"
+#include "main.h"
 #include <stdio.h>
 /**
  * print_add - prints the address of an input variable
@@ -49,4 +34,19 @@ int print_add(va_list arguments, char *buf, unsigned int ibuf)
 	binary = fill_binary_array(binary, int_input, isnegative, 64);
 	hexadecimal = malloc(sizeof(char) * (16 + 1));
 	hexadecimal = fill_hex_array(binary, hexadecimal, 0, 16);
-	ibuf = handl_buf(
+	ibuf = handl_buf(buf, '0', ibuf);
+	ibuf = handl_buf(buf, 'x', ibuf);
+	for (first_digit = i = count = 0; hexadecimal[i]; i++)
+	{
+		if (hexadecimal[i] != '0' && first_digit == 0)
+			first_digit = 1;
+		if (first_digit)
+		{
+			ibuf = handl_buf(buf, hexadecimal[i], ibuf);
+			count++;
+		}
+	}
+	free(binary);
+	free(hexadecimal);
+	return (count + 2);
+}
